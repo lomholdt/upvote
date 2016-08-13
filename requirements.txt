@@ -1,0 +1,15 @@
+mysqlclient
+django
+django-environ
+#django-widget-tweaks
+#django-mailgun
+Pillow
+django-wysiwyg-redactor
+#bleach
+#algoliasearch-django
+#django-image-cropping
+#easy_thumbnails
+#python-memcached
+#django-storages
+#boto
+#django-mail-templated
