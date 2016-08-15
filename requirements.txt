@@ -10,6 +10,6 @@ django-wysiwyg-redactor
 #django-image-cropping
 #easy_thumbnails
 #python-memcached
-#django-storages
-#boto
+django-storages
+boto
 #django-mail-templated
