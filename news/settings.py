@@ -62,7 +62,10 @@ ROOT_URLCONF = 'news.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['news/templates'],
+        'DIRS': [
+            os.path.join(os.path.dirname(os.path.dirname(__file__)), 'templates'),
+            'news/templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,11 +76,6 @@ TEMPLATES = [
             ],
         },
     },
-]
-
-SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
-TEMPLATE_DIRS = [
-    os.path.join(SETTINGS_PATH, 'templates'),
 ]
 
 WSGI_APPLICATION = 'news.wsgi.application'
@@ -146,8 +144,8 @@ AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
 
 AWS_S3_DOMAIN = "%s.s3.amazonaws.com" % AWS_STORAGE_BUCKET_NAME
 
-STATIC_URL = env('STATIC_URL') % AWS_S3_DOMAIN
-MEDIA_URL = env('MEDIA_URL') % AWS_S3_DOMAIN
+STATIC_URL = env('STATIC_URL')  #  % AWS_S3_DOMAIN
+MEDIA_URL = env('MEDIA_URL')  # % AWS_S3_DOMAIN
 
 STATIC_ROOT = env('STATIC_ROOT')
 MEDIA_ROOT = env('MEDIA_ROOT')
