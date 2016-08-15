@@ -3,10 +3,12 @@ from uuid import uuid4
 
 
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
 from django.utils.deconstruct import deconstructible
 from django.utils.text import slugify
+from django.utils.timezone import now, utc
 from redactor.fields import RedactorField
 from django.utils.translation import ugettext as _
 from datetime import datetime, timedelta
@@ -43,27 +45,35 @@ class Article(models.Model):
     downs = models.IntegerField(default=0)
     rank = models.FloatField(default=0)
 
-
-
     def __str__(self):
         return self.title
 
     def get_cover_photo(self):
         if self.cover_photo:
-            return os.path.join(settings.STATIC_URL, self.cover_photo)
+            return self.cover_photo.url
+
+    def get_absolute_url(self):
+        return reverse('article_view', args=[str(self.slug)])
 
     #  RANKING
-    def epoch_seconds(self, date):
-        epoch = datetime(1970, 1, 1)
+    def __epoch_seconds(self, date):
+        epoch = datetime(1970, 1, 1, tzinfo=utc)
         td = date - epoch
         return td.days * 86400 + td.seconds + (float(td.microseconds) / 1000000)
 
-    def score(self, ups, downs):
+    def __score(self, ups, downs):
         return ups - downs
 
-    def hot(self, ups, downs, date):
-        s = self.score(ups, downs)
+    def __hot(self, ups, downs, date):
+        s = self.__score(ups, downs)
         order = log(max(abs(s), 1), 10)
         sign = 1 if s > 0 else -1 if s < 0 else 0
-        seconds = self.epoch_seconds(date) - 1134028003
+        seconds = self.__epoch_seconds(date) - 1134028003
         return round(sign * order + seconds / 45000, 7)
+
+    def get_rank(self):
+        return self.__hot(self.ups, self.downs, self.created)
+
+    def set_rank(self):
+        self.rank = self.get_rank()
+        self.save()
