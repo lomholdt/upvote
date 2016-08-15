@@ -39,9 +39,11 @@ class Article(models.Model):
     modified = models.DateTimeField(auto_now=True)
     slug = models.SlugField(unique=True)
     published_at = models.DateTimeField(default=timezone.now)
-    ups = models.FloatField(default=0)
-    downs = models.FloatField(default=0)
+    ups = models.IntegerField(default=0)
+    downs = models.IntegerField(default=0)
     rank = models.FloatField(default=0)
+
+
 
     def __str__(self):
         return self.title
