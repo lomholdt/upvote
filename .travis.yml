@@ -19,3 +19,4 @@ services:
 
 # command to run tests
 script: python manage.py test
+
