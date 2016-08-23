@@ -6,7 +6,12 @@ python:
   - "3.5"
   - "3.5-dev" # 3.5 development branch
 # command to install dependencies
-install: "pip install -r requirements.txt"
+install:
+  - pip install -r requirements.txt
+  - python manage.py migrate
+
+before_script:
+  - mysql -e 'create database news;'
 
 # Get mysql
 services:
