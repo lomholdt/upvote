@@ -134,8 +134,8 @@ body {
 
 .top-forside-rubrik{
 
-    font-family: 'Montserrat', serif;
-    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
     font-weight: bold;
     color: #000;
 
@@ -150,7 +150,7 @@ body {
 
 .forside-rubrik{
 
-    font-family: 'Montserrat', serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 22px;
     font-weight: bold;
     color: #000;
@@ -166,7 +166,7 @@ body {
 
 .rubrik {
 
-    font-family: 'Montserrat', serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 28px;
     font-weight: bold;
     padding-bottom: 10px;
@@ -188,7 +188,7 @@ body {
 
 .recommended-rubrik{
 
-    font-family: 'Montserrat', serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-weight: bold;
     color: #000;
