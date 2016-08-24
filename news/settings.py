@@ -29,7 +29,9 @@ SECRET_KEY = '(%&6(+h9u7v6&f#&=6*vh2swi1pt6h_z%)a_gomg)qy+qyz9=b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'https://www.upvote.dk/'
+]
 
 
 # Application definition
@@ -44,6 +46,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'redactor',
     'storages',
+    'taggit',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -155,4 +158,4 @@ MEDIA_ROOT = env('MEDIA_ROOT')
 DEFAULT_FILE_STORAGE = env('DEFAULT_FILE_STORAGE')
 STATICFILES_STORAGE = env('STATICFILES_STORAGE')
 
-
+TAGGIT_CASE_INSENSITIVE = True

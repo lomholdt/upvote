@@ -13,3 +13,4 @@ django-wysiwyg-redactor
 django-storages
 boto
 #django-mail-templated
+django-taggit

@@ -44,6 +44,7 @@
                             <div class="panel-thumbnail">
                                 <a href="{{ article.get_absolute_url }}"> <img class="img-responsive" src="{{ article.get_cover }}" alt=""/></a>
                             </div>
+                            <div>↑{{ article.ups }}|{{ article.downs }}↓</div>
                             <div class="panel-body">
                                 <p class="time">{{ article.published_at }}</p>
                                 <div class="forside-rubrik">

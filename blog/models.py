@@ -1,7 +1,7 @@
 import os
 from uuid import uuid4
 
-
+import itertools
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -15,6 +15,8 @@ from datetime import datetime, timedelta
 from math import log
 
 # Create your models here.
+from taggit.managers import TaggableManager
+
 from news import settings
 
 
@@ -32,6 +34,7 @@ class PathAndRename(object):
 
 
 class Article(models.Model):
+
     title = models.CharField(max_length=256, verbose_name=_('Titel'))
     lead = models.CharField(max_length=512, verbose_name=_('Manchet'))
     body = RedactorField(verbose_name=_('Tekst'))
@@ -41,9 +44,11 @@ class Article(models.Model):
     modified = models.DateTimeField(auto_now=True)
     slug = models.SlugField(unique=True)
     published_at = models.DateTimeField(default=timezone.now)
+    tags = TaggableManager()
     ups = models.IntegerField(default=0)
     downs = models.IntegerField(default=0)
     rank = models.FloatField(default=0)
+
 
     def __str__(self):
         return self.title
@@ -51,6 +56,7 @@ class Article(models.Model):
     def get_cover_photo(self):
         if self.cover_photo:
             return self.cover_photo.url
+        return os.path.join(settings.STATIC_URL, 'blog/img/upvote_cover.png')
 
     def get_absolute_url(self):
         return reverse('article_view', args=[str(self.slug)])
@@ -76,4 +82,20 @@ class Article(models.Model):
 
     def set_rank(self):
         self.rank = self.get_rank()
-        self.save()
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+
+            #  instance = super(ClinicCreateForm, self).save(commit=False)
+            max_length = Article._meta.get_field('slug').max_length
+            self.slug = orig = slugify(self.title)[:max_length]
+
+            for x in itertools.count(1):
+                if not Article.objects.filter(slug=self.slug).exists():
+                    break
+                # Truncate the original slug dynamically. Minus 1 for the hyphen.
+                self.slug = "%s-%d" % (orig[:max_length - len(str(x)) - 1], x)
+
+        self.set_rank()
+        super(Article, self).save(*args, **kwargs)
+
