@@ -100,7 +100,7 @@ REDACTOR_OPTIONS = {'lang': 'en'}
 REDACTOR_UPLOAD = 'uploads'
 REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.UUIDUploader'
 REDACTOR_AUTH_DECORATOR = 'django.contrib.auth.decorators.login_required'
-#REDACTOR_FILE_STORAGE = 'my_site.file_storages.StorageClass'
+REDACTOR_FILE_STORAGE = env('DEFAULT_FILE_STORAGE')
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
