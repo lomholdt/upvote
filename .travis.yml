@@ -16,7 +16,6 @@ services:
 
 # command to run tests
 script:
-  - python
-  - quit()
+  - echo Done...
   # - python manage.py test
 
