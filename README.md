@@ -1,3 +1,4 @@
 # upvote.dk
 
-Testing 12345
+![Travis Status Image]
+(https://travis-ci.org/lomholdt/upvote.svg?branch=master)
