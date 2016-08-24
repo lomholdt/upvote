@@ -15,5 +15,7 @@ services:
   - mysql
 
 # command to run tests
-#script: python manage.py test
+script:
+  - python
+  # - python manage.py test
 
