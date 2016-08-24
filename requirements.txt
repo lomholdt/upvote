@@ -1,7 +1,7 @@
 mysqlclient
 django
 django-environ
-#django-widget-tweaks
+django-widget-tweaks
 #django-mailgun
 Pillow
 django-wysiwyg-redactor

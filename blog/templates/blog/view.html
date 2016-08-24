@@ -51,12 +51,9 @@
             <img class="img-responsive" src="{{ article.get_cover_photo }}" alt="">
 
             <!-- Title -->
-            <h1 class="rubrik">Hvis du skal vise, at du har følelser for ham, skal du ikke gøre dette</h1>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+            <h1 class="rubrik">{{ article.title }}</h1>
+            <h3>{{ article.lead }}</h3>
+            <p>{{ article.body|safe }}</p>
             <br>
         </div>
     </div>
@@ -108,7 +105,7 @@
                 <div class="col-sm-3 col-md-3">
                     <div class="panel panel-default">
                         <div class="panel-thumbnail">
-                            <a href="#"> <img class="img-responsive" src="placeholder.png" alt=""/></a>
+                            <a href="#"> <img class="img-responsive" src="https://placehold.it/300x200" alt=""/></a>
                         </div>
                         <div class="panel-body" >
                             <div class="recommended-rubrik">
@@ -121,7 +118,7 @@
                 <div class="col-sm-3 col-md-3">
                     <div class="panel panel-default">
                         <div class="panel-thumbnail">
-                            <a href="#"> <img class="img-responsive" src="placeholder.png" alt=""/></a>
+                            <a href="#"> <img class="img-responsive" src="https://placehold.it/300x200" alt=""/></a>
                         </div>
                         <div class="panel-body" >
                             <div class="recommended-rubrik">
@@ -134,7 +131,7 @@
                 <div class="col-sm-3 col-md-3">
                     <div class="panel panel-default">
                         <div class="panel-thumbnail">
-                            <a href="#"> <img class="img-responsive" src="placeholder.png" alt=""/></a>
+                            <a href="#"> <img class="img-responsive" src="https://placehold.it/300x200" alt=""/></a>
                         </div>
                         <div class="panel-body" >
                             <div class="recommended-rubrik">
@@ -147,7 +144,7 @@
                 <div class="col-sm-3 col-md-3">
                     <div class="panel panel-default">
                         <div class="panel-thumbnail">
-                            <a href="#"> <img class="img-responsive" src="placeholder.png" alt=""/></a>
+                            <a href="#"> <img class="img-responsive" src="https://placehold.it/300x200" alt=""/></a>
                         </div>
                         <div class="panel-body" >
                             <div class="recommended-rubrik">
