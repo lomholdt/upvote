@@ -49,7 +49,6 @@ class Article(models.Model):
     downs = models.IntegerField(default=0)
     rank = models.FloatField(default=0)
 
-
     def __str__(self):
         return self.title
 
@@ -85,8 +84,6 @@ class Article(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.pk:
-
-            #  instance = super(ClinicCreateForm, self).save(commit=False)
             max_length = Article._meta.get_field('slug').max_length
             self.slug = orig = slugify(self.title)[:max_length]
 
@@ -95,7 +92,6 @@ class Article(models.Model):
                     break
                 # Truncate the original slug dynamically. Minus 1 for the hyphen.
                 self.slug = "%s-%d" % (orig[:max_length - len(str(x)) - 1], x)
-
-        self.set_rank()
         super(Article, self).save(*args, **kwargs)
+        self.set_rank()
 
