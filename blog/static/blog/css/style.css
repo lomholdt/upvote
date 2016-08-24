@@ -1,5 +1,5 @@
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Istok Web', sans-serif;
     font-size: 16px;
     line-height: 1.5;
     color: #333;
@@ -134,7 +134,7 @@ body {
 
 .top-forside-rubrik{
 
-    font-family: 'Merriweather', serif;
+    font-family: 'Montserrat', serif;
     font-size: 24px;
     font-weight: bold;
     color: #000;
@@ -142,7 +142,7 @@ body {
 }
 
 .top-forside-manchet{
-    font-family: 'Lato', sans-serif;
+    font-family: 'Istok Web', sans-serif;
     font-size: 18px;
     font-weight: lighter;
 
@@ -150,7 +150,7 @@ body {
 
 .forside-rubrik{
 
-    font-family: 'Merriweather', serif;
+    font-family: 'Montserrat', serif;
     font-size: 22px;
     font-weight: bold;
     color: #000;
@@ -158,7 +158,7 @@ body {
 }
 
 .forside-manchet{
-    font-family: 'Lato', sans-serif;
+    font-family: 'Istok Web', sans-serif;
     font-size: 16px;
     font-weight: lighter;
 
@@ -166,7 +166,7 @@ body {
 
 .rubrik {
 
-    font-family: 'Merriweather', serif;
+    font-family: 'Montserrat', serif;
     font-size: 28px;
     font-weight: bold;
     padding-bottom: 10px;
@@ -174,22 +174,21 @@ body {
 
 }
 
-.manchet{
-    font-family: 'Lato', sans-serif;
-    font-size: 22px;
-    padding-bottom: 10px;
-    line-height: 1.5;
+.article-lead{
+
+    margin-bottom: 25px;
+    margin-top: 10px;
 }
 
 .article-body-text{
-    font-family: 'Lato', sans-serif;
+    font-family: 'Istok Web', sans-serif;
     font-size: 16px;
     line-height: 1.5;
 }
 
 .recommended-rubrik{
 
-    font-family: 'Merriweather', serif;
+    font-family: 'Montserrat', serif;
     font-size: 18px;
     font-weight: bold;
     color: #000;
@@ -198,7 +197,8 @@ body {
 
 .time {
 
-    color: #999;
+    color: #666;
+    font-size: 14px;
 
 }
 
