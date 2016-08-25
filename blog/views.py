@@ -1,9 +1,10 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
 from django.utils.timezone import now
 
-from blog.models import Article
+from blog.models import Article, Vote
 
 
 def index(request):
@@ -17,4 +18,10 @@ def view(request, slug):
     article = Article.objects.get(slug=slug)
     context = {'article': article}
     return render(request, 'blog/view.html', context=context)
+
+
+def vote(request, article, direction, identification):
+    article = Article.objects.get(pk=article)
+    vote, bool = Vote.objects.update_or_create(article=article, identification=identification, defaults={'direction': direction})
+    return JsonResponse(bool, safe=False)
 

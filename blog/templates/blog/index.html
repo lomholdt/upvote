@@ -82,7 +82,7 @@
                                     <div class="col-sm-6">
                                         <p class="time">{{ article.published_at }}</p>
                                         <div class="forside-rubrik">
-                                            <a href="#"><p>{{ article.title }}</p></a>
+                                            <a href="{{ article.get_absolute_url }}"><p>{{ article.title }}</p></a>
                                         </div>
                                         <div class="forside-manchet">
                                             <p>{{ article.lead }}</p>

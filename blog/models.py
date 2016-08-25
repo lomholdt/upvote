@@ -80,7 +80,10 @@ class Article(models.Model):
         return self.__hot(self.ups, self.downs, self.created)
 
     def set_rank(self):
+        self.ups = self.vote_set.filter(direction=1)
+        self.downs = self.vote_set.filter(direction=0)
         self.rank = self.get_rank()
+        self.save()
 
     def save(self, *args, **kwargs):
         if not self.pk:
@@ -94,4 +97,15 @@ class Article(models.Model):
                 self.slug = "%s-%d" % (orig[:max_length - len(str(x)) - 1], x)
         super(Article, self).save(*args, **kwargs)
         self.set_rank()
+
+
+class Vote(models.Model):
+    identification = models.CharField(max_length=256)
+    direction = models.BooleanField()
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ('identification', 'article')
 
