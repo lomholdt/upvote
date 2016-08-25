@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -9,7 +8,8 @@ from blog.models import Article
 
 def index(request):
     articles = Article.objects.filter(published_at__lte=now()).order_by('-rank')
-    context = {'articles': articles}
+    latest_articles = Article.objects.filter(published_at__lte=now()).order_by('-created')[3:]
+    context = {'articles': articles, 'latest_articles': latest_articles}
     return render(request, 'blog/index.html', context=context)
 
 
