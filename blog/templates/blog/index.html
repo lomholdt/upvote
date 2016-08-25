@@ -38,7 +38,7 @@
             <div class="row">
 
 
-                {% for article in articles|slice:":3" %}
+                {% for article in articles|slice:":6" %}
                     <div class="col-sm-6 col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
@@ -57,7 +57,7 @@
                         </div>
                     </div>
 
-                    {% if forloop.counter|divisibleby:3 %}
+                    {% if forloop.counter|divisibleby:6 %}
                         <!-- Banner 930x180 -->
                         <hr>
                         <img class="img-responsive banner" src="http://placehold.it/930x180">
