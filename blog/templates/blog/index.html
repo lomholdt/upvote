@@ -40,7 +40,7 @@
 
                 {% for article in articles|slice:":6" %}
                     <div class="col-sm-6 col-md-4">
-                        <div class="panel panel-default">
+                        <div class="panel panel-default panel-frontpage-middle-articles">
                             <div class="panel-thumbnail">
                                 <a href="{{ article.get_absolute_url }}"> <img class="img-responsive" src="{{ article.get_cover_photo }}" alt=""/></a>
                             </div>
