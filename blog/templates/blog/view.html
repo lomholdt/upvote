@@ -15,10 +15,15 @@
         </div>
     </div>
 
-    <!-- share buttons -->
+    <!-- share and upvote buttons -->
     <div class="row">
         <div class="col-sm-6 col-sm-offset-1">
             <div id="share-buttons">
+
+                <!-- Upvote buttons-->
+                 <button type="button" class="btn btn-default" id="upvote" onclick="upvote()"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-default" id="downvote" onclick="downvote()"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
+
                 <!-- Facebook -->
                 <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
                     <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
@@ -58,10 +63,16 @@
         </div>
     </div>
 
-    <!-- share buttons -->
+    <!-- share and upvote buttons -->
     <div class="row">
         <div class="col-sm-6 col-sm-offset-1">
+           
             <div id="share-buttons">
+
+                 <!-- Upvote buttons-->
+                 <button type="button" class="btn btn-default" id="upvote2" onclick="upvote()"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-default" id="downvote2" onclick="downvote()"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
+
                 <!-- Facebook -->
                 <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
                     <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
@@ -156,5 +167,23 @@
             </div>
         </div>
     </div>
+
+      <script>
+
+        function upvote() {
+           document.getElementById("upvote").className = "btn btn-default active";
+           document.getElementById("downvote").className = "btn btn-default";
+              document.getElementById("upvote2").className = "btn btn-default active";
+           document.getElementById("downvote2").className = "btn btn-default";
+         }
+
+         function downvote() {
+           document.getElementById("upvote").className = "btn btn-default";
+           document.getElementById("downvote").className = "btn btn-default active";
+            document.getElementById("upvote2").className = "btn btn-default";
+           document.getElementById("downvote2").className = "btn btn-default active";
+         }
+
+         </script>
 
 {% endblock %}
