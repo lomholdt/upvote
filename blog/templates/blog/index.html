@@ -42,7 +42,7 @@
                     <div class="col-sm-6 col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
-                                <a href="{{ article.get_absolute_url }}"> <img class="img-responsive" src="{{ article.get_cover }}" alt=""/></a>
+                                <a href="{{ article.get_absolute_url }}"> <img class="img-responsive" src="{{ article.get_cover_photo }}" alt=""/></a>
                             </div>
                             <div>↑{{ article.ups }}|{{ article.downs }}↓</div>
                             <div class="panel-body">
@@ -72,63 +72,26 @@
                 <div class="col-sm-8">
                     <h1 class="text-center">Seneste nyt</h1>
                     <br>
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <img class="img-responsive left-image" src="{% static 'blog/img/placeholder.png' %}">
-                                </div>
-                                <div class="col-sm-6">
-                                    <p class="time">10-02-2015</p>
-                                    <div class="forside-rubrik">
-                                        <a href="#"><p>Artist Mickalene Thomas Is Bringing Black Women into the Canon</p></a>
+                    {% for article in latest_articles %}
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img class="img-responsive left-image" src="{{ article.get_cover_photo }}">
                                     </div>
-                                    <div class="forside-manchet">
-                                        <p>Thomas uses painting, photography, collage, and video to demand her glamorous, assertive subjects be seen.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-
-                                    <img class="img-responsive left-image" src="{% static 'blog/img/placeholder.png' %}">
-                                </div>
-                                <div class="col-sm-6">
-                                    <p class="time">10-02-2015</p>
-                                    <div class="forside-rubrik">
-                                        <a href="#"><p>Artist Mickalene Thomas Is Bringing Black Women into the Canon</p></a>
-                                    </div>
-                                    <div class="forside-manchet">
-                                        <p>Thomas uses painting, photography, collage, and video to demand her glamorous, assertive subjects be seen.</p>
+                                    <div class="col-sm-6">
+                                        <p class="time">{{ article.published_at }}</p>
+                                        <div class="forside-rubrik">
+                                            <a href="#"><p>{{ article.title }}</p></a>
+                                        </div>
+                                        <div class="forside-manchet">
+                                            <p>{{ article.lead }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <img class="img-responsive left-image"  src="{% static 'blog/img/placeholder.png' %}">
-                                </div>
-                                <div class="col-sm-6">
-                                    <p class="time">10-02-2015</p>
-                                    <div class="forside-rubrik">
-                                        <a href="#"><p>Artist Mickalene Thomas Is Bringing Black Women into the Canon</p></a>
-                                    </div>
-                                    <div class="forside-manchet">
-                                        <p>Thomas uses painting, photography, collage, and video to demand her glamorous, assertive subjects be seen.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
 
                 </div>
                 <div class="col-sm-4">
