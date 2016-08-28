@@ -40,7 +40,7 @@
 
                 {% for article in articles|slice:":6" %}
                     <div class="col-sm-6 col-md-4">
-                        <div class="panel panel-default panel-frontpage-middle-articles">
+                        <div class="panel panel-default min-height">
                          <p class="time">{{ article.published_at }}</p>
                             <div class="panel-thumbnail">
                                 <a href="{{ article.get_absolute_url }}"> <img class="img-responsive" src="{{ article.get_cover_photo }}" alt=""/></a>
@@ -77,10 +77,10 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12 col-md-6">
                                         <img class="img-responsive left-image" src="{{ article.get_cover_photo }}">
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12 col-md-6">
                                         <p class="time">{{ article.published_at }}</p>
                                         <div class="forside-rubrik">
                                             <a href="#"><p>{{ article.title }}</p></a>

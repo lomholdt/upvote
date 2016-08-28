@@ -1,3 +1,24 @@
+@media screen and (min-width: 400px) {
+    
+    .min-height {
+    min-height: 375px;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    
+    .min-height {
+    min-height: 425px;
+    }
+}
+
+@media screen and (min-width: 950px) {
+    
+    .min-height {
+    min-height: 450px;
+    }
+}
+
 body {
     font-family: 'Istok Web', sans-serif;
     font-size: 16px;
@@ -121,12 +142,6 @@ body {
     box-shadow: 0 0px 0px rgba(0,0,0,.05);
 }
 
-.panel-frontpage-middle-articles {
-
-min-height: 450px;
-
-}
-
 .panel-body{
     padding-left: 0px;
     padding-right: 0px
@@ -141,7 +156,7 @@ min-height: 450px;
 .top-forside-rubrik{
 
     font-family: 'Montserrat', sans-serif;
-    font-size: 30px;
+    font-size: 28px;
     font-weight: bold;
     color: #000;
     line-height: normal;
@@ -159,7 +174,7 @@ min-height: 450px;
 .forside-rubrik{
 
     font-family: 'Montserrat', sans-serif;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     color: #000;
     line-height: normal;
