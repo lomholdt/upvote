@@ -41,28 +41,29 @@
                 {% for article in articles|slice:":6" %}
                     <div class="col-sm-6 col-md-4">
                         <div class="panel panel-default panel-frontpage-middle-articles">
+                         <p class="time">{{ article.published_at }}</p>
                             <div class="panel-thumbnail">
                                 <a href="{{ article.get_absolute_url }}"> <img class="img-responsive" src="{{ article.get_cover_photo }}" alt=""/></a>
                             </div>
-                            <div>↑{{ article.ups }}|{{ article.downs }}↓</div>
                             <div class="panel-body">
-                                <p class="time">{{ article.published_at }}</p>
                                 <div class="forside-rubrik">
                                     <a href="{{ article.get_absolute_url }}"><p>{{ article.title }}</p></a>
                                 </div>
                                 <div class="forside-manchet">
                                     <p>{{ article.lead }}</p>
                                 </div>
+                                <div>↑{{ article.ups }}|{{ article.downs }}↓</div>
                             </div>
                         </div>
+                        
                     </div>
 
                     {% if forloop.counter|divisibleby:6 %}
+
                         <!-- Banner 930x180 -->
-                        <hr>
                         <img class="img-responsive banner" src="http://placehold.it/930x180">
-                        <hr>
                     {% endif %}
+
                 {% endfor %}
 
 
@@ -70,7 +71,7 @@
             <hr>
             <div class="row">
                 <div class="col-sm-8">
-                    <h1 class="text-center">Seneste nyt</h1>
+                    <h1 class="text-center">Hot</h1>
                     <br>
                     {% for article in latest_articles %}
                         <div class="panel panel-default">
