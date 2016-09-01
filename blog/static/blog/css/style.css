@@ -1,17 +1,18 @@
 @media screen and (min-width: 400px) {
-    
-    .min-height {
+
+    .panel-height {
     min-height: 425px;
     }
-}
 
-@media screen and (min-width: 950px) {
-    
-    .min-height {
-    min-height: 450px;
+    .img-max-height {
+    max-height: 175px;
     }
-}
 
+    .hr-color{
+    border-top: 1px solid #fff;  
+    }
+    
+}
 
 body {
     font-family: 'Istok Web', sans-serif;
@@ -20,6 +21,7 @@ body {
     color: #333;
     background-color: #FFFFFF;
 }
+
 
 #share-buttons img {
     width: 35px;

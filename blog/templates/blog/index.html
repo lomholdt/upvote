@@ -40,10 +40,10 @@
 
                 {% for article in articles|slice:":6" %}
                     <div class="col-sm-6 col-md-4">
-                        <div class="panel panel-default min-height">
+                        <div class="panel panel-default panel-height">
                          <p class="time">{{ article.published_at }}</p>
                             <div class="panel-thumbnail">
-                                <a href="{{ article.get_absolute_url }}"> <img class="img-responsive" src="{{ article.get_cover_photo }}" alt=""/></a>
+                                <a href="{{ article.get_absolute_url }}"> <img class="img-responsive img-max-height" src="{{ article.get_cover_photo }}" alt=""/></a>
                             </div>
                             <div class="panel-body">
                                 <div class="forside-rubrik">
@@ -55,7 +55,7 @@
                                 <div>↑{{ article.ups }}|{{ article.downs }}↓</div>
                             </div>
                         </div>
-                        
+                        <hr class="hr-color">
                     </div>
 
                     {% if forloop.counter|divisibleby:6 %}
@@ -72,28 +72,24 @@
             <div class="row">
                 <div class="col-sm-8">
                     <h1 class="text-center">Hot</h1>
-                    <br>
+                    <hr>
                     {% for article in latest_articles %}
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-sm-12 col-md-6">
+                                    <div class="col-xs-5 col-md-5">
                                         <img class="img-responsive left-image" src="{{ article.get_cover_photo }}">
                                     </div>
-                                    <div class="col-sm-12 col-md-6">
-                                        <p class="time">{{ article.published_at }}</p>
+                                    <div class="col-xs-7 col-md-7">
                                         <div class="forside-rubrik">
                                             <a href="#"><p>{{ article.title }}</p></a>
-                                        </div>
-                                        <div class="forside-manchet">
-                                            <p>{{ article.lead }}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    <hr>
                     {% endfor %}
-
                 </div>
                 <div class="col-sm-4">
                     <!-- Banner 300x250 -->
