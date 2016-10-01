@@ -21,8 +21,8 @@
             <div id="share-buttons">
 
                 <!-- Upvote buttons-->
-                <button type="button" class="btn btn-default" id="upvote" onclick="upvote()"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
-                <button type="button" class="btn btn-default" id="downvote" onclick="downvote()"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-default upvote" id="upvote" onclick="upvote()"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-default downvote" id="downvote" onclick="downvote()"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
 
                 <!-- Facebook -->
                 <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
@@ -71,8 +71,8 @@
             <div id="share-buttons">
 
                 <!-- Upvote buttons-->
-                <button type="button" class="btn btn-default" id="upvote2" onclick="upvote()"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
-                <button type="button" class="btn btn-default" id="downvote2" onclick="downvote()"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-default upvote" id="upvote2" onclick="upvote()"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-default downvote" id="downvote2" onclick="downvote()"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
 
                 <!-- Facebook -->
                 <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
@@ -171,18 +171,34 @@
 
     <script>
 
+        var fingerprint;
+
         function upvote() {
-            document.getElementById("upvote").className = "btn btn-default active";
-            document.getElementById("downvote").className = "btn btn-default";
-            document.getElementById("upvote2").className = "btn btn-default active";
-            document.getElementById("downvote2").className = "btn btn-default";
+            $('.upvote').addClass('active');
+            $('.downvote').removeClass('active');
         }
 
         function downvote() {
-            document.getElementById("upvote").className = "btn btn-default";
-            document.getElementById("downvote").className = "btn btn-default active";
-            document.getElementById("upvote2").className = "btn btn-default";
-            document.getElementById("downvote2").className = "btn btn-default active";
+            $('.upvote').removeClass('active');
+            $('.downvote').addClass('active');
+        }
+
+        function setInitialVote() {
+            console.log('Setting innitial fingerprint');
+            new Fingerprint2().get(function(fp){
+                fingerprint = fp;
+                $.ajax({
+                    url: '/stem/status/{{ article.id }}/' + fp
+                }).done(function(data){
+                    console.log(data);
+                    if(data == true){ // upvoted
+                        upvote();
+                    }
+                    else if (data == false){ // downvoted
+                        downvote();
+                    }
+                });
+            });
         }
 
         $('#upvote').on('click', function(){
@@ -206,6 +222,8 @@
                 });
             });
         });
+
+        window.onload = setInitialVote();
 
     </script>
 

@@ -1,3 +1,4 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
 from django.shortcuts import render
 
@@ -16,11 +17,6 @@ def index(request):
 
 def view(request, slug):
     article = Article.objects.get(slug=slug)
-
-    # upvotes = Vote.objects.filter(article=article, direction__exact=1).count()
-    # downvotes = Vote.objects.filter(article=article, direction__exact=0).count()
-    # article.downs = downvotes
-    # article.ups = upvotes
     article.set_rank()
     context = {'article': article}
     return render(request, 'blog/view.html', context=context)
@@ -31,3 +27,10 @@ def vote(request, article, direction, identification):
     vote, bool = Vote.objects.update_or_create(article=article, identification=identification, defaults={'direction': direction})
     return JsonResponse(bool, safe=False)
 
+
+def vote_status(request, article, identification):
+    try:
+        vote = Vote.objects.get(article=article, identification=identification)
+        return JsonResponse(vote.direction, safe=False)
+    except ObjectDoesNotExist:
+        return JsonResponse('none', safe=False)
