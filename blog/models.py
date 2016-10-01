@@ -80,8 +80,8 @@ class Article(models.Model):
         return self.__hot(self.ups, self.downs, self.created)
 
     def set_rank(self):
-        self.ups = self.vote_set.filter(direction=1)
-        self.downs = self.vote_set.filter(direction=0)
+        self.ups = self.vote_set.filter(direction=1).count()
+        self.downs = self.vote_set.filter(direction=0).count()
         self.rank = self.get_rank()
         self.save()
 
@@ -96,7 +96,6 @@ class Article(models.Model):
                 # Truncate the original slug dynamically. Minus 1 for the hyphen.
                 self.slug = "%s-%d" % (orig[:max_length - len(str(x)) - 1], x)
         super(Article, self).save(*args, **kwargs)
-        self.set_rank()
 
 
 class Vote(models.Model):

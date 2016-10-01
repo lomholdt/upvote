@@ -41,7 +41,7 @@
                 {% for article in articles|slice:":6" %}
                     <div class="col-sm-6 col-md-4">
                         <div class="panel panel-default panel-height">
-                         <p class="time">{{ article.published_at }}</p>
+                            <p class="time">{{ article.published_at }}</p>
                             <div class="panel-thumbnail">
                                 <a href="{{ article.get_absolute_url }}"> <img class="img-responsive img-max-height" src="{{ article.get_cover_photo }}" alt=""/></a>
                             </div>
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                         </div>
-                    <hr>
+                        <hr>
                     {% endfor %}
                 </div>
                 <div class="col-sm-4">
@@ -100,6 +100,15 @@
 
                 </div>
             </div>
+
+            <script>
+
+                new Fingerprint2().get(function(result, components){
+                    console.log(result); //a hash, representing your device fingerprint
+                    console.log(components); // an array of FP components
+                });
+
+            </script>
 
         </div>
     </div>

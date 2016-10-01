@@ -16,6 +16,12 @@ def index(request):
 
 def view(request, slug):
     article = Article.objects.get(slug=slug)
+
+    # upvotes = Vote.objects.filter(article=article, direction__exact=1).count()
+    # downvotes = Vote.objects.filter(article=article, direction__exact=0).count()
+    # article.downs = downvotes
+    # article.ups = upvotes
+    article.set_rank()
     context = {'article': article}
     return render(request, 'blog/view.html', context=context)
 

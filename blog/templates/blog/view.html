@@ -21,7 +21,7 @@
             <div id="share-buttons">
 
                 <!-- Upvote buttons-->
-                 <button type="button" class="btn btn-default" id="upvote" onclick="upvote()"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-default" id="upvote" onclick="upvote()"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
                 <button type="button" class="btn btn-default" id="downvote" onclick="downvote()"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
 
                 <!-- Facebook -->
@@ -51,6 +51,7 @@
     <!-- Content -->
     <div class="row">
         <div class="col-sm-10 col-md-6 col-sm-offset-1">
+            <div>{{ article.rank }}</div>
 
             <!-- Image -->
             <img class="img-responsive" src="{{ article.get_cover_photo }}" alt="">
@@ -66,11 +67,11 @@
     <!-- share and upvote buttons -->
     <div class="row">
         <div class="col-sm-6 col-sm-offset-1">
-           
+
             <div id="share-buttons">
 
-                 <!-- Upvote buttons-->
-                 <button type="button" class="btn btn-default" id="upvote2" onclick="upvote()"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
+                <!-- Upvote buttons-->
+                <button type="button" class="btn btn-default" id="upvote2" onclick="upvote()"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
                 <button type="button" class="btn btn-default" id="downvote2" onclick="downvote()"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
 
                 <!-- Facebook -->
@@ -168,22 +169,44 @@
         </div>
     </div>
 
-      <script>
+    <script>
 
         function upvote() {
-           document.getElementById("upvote").className = "btn btn-default active";
-           document.getElementById("downvote").className = "btn btn-default";
-              document.getElementById("upvote2").className = "btn btn-default active";
-           document.getElementById("downvote2").className = "btn btn-default";
-         }
+            document.getElementById("upvote").className = "btn btn-default active";
+            document.getElementById("downvote").className = "btn btn-default";
+            document.getElementById("upvote2").className = "btn btn-default active";
+            document.getElementById("downvote2").className = "btn btn-default";
+        }
 
-         function downvote() {
-           document.getElementById("upvote").className = "btn btn-default";
-           document.getElementById("downvote").className = "btn btn-default active";
+        function downvote() {
+            document.getElementById("upvote").className = "btn btn-default";
+            document.getElementById("downvote").className = "btn btn-default active";
             document.getElementById("upvote2").className = "btn btn-default";
-           document.getElementById("downvote2").className = "btn btn-default active";
-         }
+            document.getElementById("downvote2").className = "btn btn-default active";
+        }
 
-         </script>
+        $('#upvote').on('click', function(){
+            new Fingerprint2().get(function(fingerprint, components){
+                $.ajax({
+                    url: '/stem/{{ article.id }}/1/' + fingerprint,
+                }).done(function(data){
+                    console.log(data);
+                    console.log(fingerprint);
+                });
+            });
+        });
+
+        $('#downvote').on('click', function(){
+            new Fingerprint2().get(function(fingerprint, components){
+                $.ajax({
+                    url: '/stem/{{ article.id }}/0/' + fingerprint,
+                }).done(function(data){
+                    console.log(data);
+                    console.log(fingerprint);
+                });
+            });
+        });
+
+    </script>
 
 {% endblock %}
