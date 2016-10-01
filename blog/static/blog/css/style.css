@@ -1,3 +1,19 @@
+@media screen and (min-width: 400px) {
+
+    .panel-height {
+    min-height: 425px;
+    }
+
+    .img-max-height {
+    max-height: 175px;
+    }
+
+    .hr-color{
+    border-top: 1px solid #fff;  
+    }
+    
+}
+
 body {
     font-family: 'Istok Web', sans-serif;
     font-size: 16px;
@@ -5,6 +21,7 @@ body {
     color: #333;
     background-color: #FFFFFF;
 }
+
 
 #share-buttons img {
     width: 35px;
@@ -121,12 +138,6 @@ body {
     box-shadow: 0 0px 0px rgba(0,0,0,.05);
 }
 
-.panel-frontpage-middle-articles {
-
-min-height: 400px;
-
-}
-
 .panel-body{
     padding-left: 0px;
     padding-right: 0px
@@ -141,9 +152,10 @@ min-height: 400px;
 .top-forside-rubrik{
 
     font-family: 'Montserrat', sans-serif;
-    font-size: 30px;
+    font-size: 28px;
     font-weight: bold;
     color: #000;
+    line-height: normal;
 
 }
 
@@ -151,15 +163,17 @@ min-height: 400px;
     font-family: 'Istok Web', sans-serif;
     font-size: 18px;
     font-weight: lighter;
+    line-height: normal;
 
 }
 
 .forside-rubrik{
 
     font-family: 'Montserrat', sans-serif;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     color: #000;
+    line-height: normal;
 
 }
 
@@ -167,6 +181,7 @@ min-height: 400px;
     font-family: 'Istok Web', sans-serif;
     font-size: 16px;
     font-weight: lighter;
+    line-height: normal;
 
 }
 
