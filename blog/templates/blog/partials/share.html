@@ -1,21 +1,21 @@
 <div id="share-buttons">
     <!-- Facebook -->
-    <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
+    <a href="http://www.facebook.com/sharer.php?u={{ request.get_host }}{{ article.get_absolute_url }}" target="_blank">
         <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
     </a>
 
     <!-- Reddit -->
-    <a href="http://reddit.com/submit?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+    <a href="http://reddit.com/submit?url={{ request.get_host }}{{ article.get_absolute_url }}&amp;title={{ article.title|urlencode }}" target="_blank">
         <img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" />
     </a>
 
     <!-- Tumblr-->
-    <a href="http://www.tumblr.com/share/link?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+    <a href="http://www.tumblr.com/share/link?url={{ request.get_host }}{{ article.get_absolute_url }}&amp;title={{ article.title|urlencode }}" target="_blank">
         <img src="https://simplesharebuttons.com/images/somacro/tumblr.png" alt="Tumblr" />
     </a>
 
     <!-- Twitter -->
-    <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
+    <a href="https://twitter.com/share?url={{ request.get_host }}{{ article.get_absolute_url }}&amp;text={{ article.title|urlencode }}&amp;hashtags=upvote.dk" target="_blank">
         <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
     </a>
 </div>
