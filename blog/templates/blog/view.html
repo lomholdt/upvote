@@ -114,64 +114,25 @@
             <h2>Se også</h2>
             <br>
             <div class="row">
-                <div class="col-sm-3 col-md-3">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#"> <img class="img-responsive" src="https://placehold.it/300x200" alt=""/></a>
-                        </div>
-                        <div class="panel-body" >
-                            <div class="recommended-rubrik">
-                                <a href="#"><p>Artist Mickalene Thomas Is Bringing Black Women into the Canon</p></a>
+                {% for related_article in top_articles %}
+                    <div class="col-sm-3 col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-thumbnail">
+                                <a href="#"> <img class="img-responsive" src="{{ related_article.get_cover_photo }}" alt=""/></a>
+                            </div>
+                            <div class="panel-body" >
+                                <div class="recommended-rubrik">
+                                    <a href="#"><p>{{ related_article.title }}</p></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-sm-3 col-md-3">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#"> <img class="img-responsive" src="https://placehold.it/300x200" alt=""/></a>
-                        </div>
-                        <div class="panel-body" >
-                            <div class="recommended-rubrik">
-                                <a href="#"><p>Artist Mickalene Thomas Is Bringing Black Women into the Canon</p></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-3 col-md-3">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#"> <img class="img-responsive" src="https://placehold.it/300x200" alt=""/></a>
-                        </div>
-                        <div class="panel-body" >
-                            <div class="recommended-rubrik">
-                                <a href="#"><p>Artist Mickalene Thomas Is Bringing Black Women into the Canon</p></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-3 col-md-3">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#"> <img class="img-responsive" src="https://placehold.it/300x200" alt=""/></a>
-                        </div>
-                        <div class="panel-body" >
-                            <div class="recommended-rubrik">
-                                <a href="#"><p>Artist Mickalene Thomas Is Bringing Black Women into the Canon</p></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 
     <script>
-
-        var fingerprint;
 
         function upvote() {
             $('.upvote').addClass('active');
@@ -185,41 +146,34 @@
 
         function setInitialVote() {
             console.log('Setting innitial fingerprint');
-            new Fingerprint2().get(function(fp){
-                fingerprint = fp;
-                $.ajax({
-                    url: '/stem/status/{{ article.id }}/' + fp
-                }).done(function(data){
-                    console.log(data);
-                    if(data == true){ // upvoted
-                        upvote();
-                    }
-                    else if (data == false){ // downvoted
-                        downvote();
-                    }
-                });
+            $.ajax({
+                url: '/stem/status/{{ article.id }}/' + Cookies.get('upvote')
+            }).done(function(data){
+                console.log(data);
+                if(data == true){ // upvoted
+                    upvote();
+                }
+                else if (data == false){ // downvoted
+                    downvote();
+                }
             });
         }
 
         $('#upvote').on('click', function(){
-            new Fingerprint2().get(function(fingerprint, components){
-                $.ajax({
-                    url: '/stem/{{ article.id }}/1/' + fingerprint,
-                }).done(function(data){
-                    console.log(data);
-                    console.log(fingerprint);
-                });
+
+            $.ajax({
+                url: '/stem/{{ article.id }}/1/' + Cookies.get('upvote'),
+            }).done(function(data){
+                console.log(data);
             });
+
         });
 
         $('#downvote').on('click', function(){
-            new Fingerprint2().get(function(fingerprint, components){
-                $.ajax({
-                    url: '/stem/{{ article.id }}/0/' + fingerprint,
-                }).done(function(data){
-                    console.log(data);
-                    console.log(fingerprint);
-                });
+            $.ajax({
+                url: '/stem/{{ article.id }}/0/' + Cookies.get('upvote'),
+            }).done(function(data){
+                console.log(data);
             });
         });
 

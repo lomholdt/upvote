@@ -9,16 +9,18 @@ from blog.models import Article, Vote
 
 
 def index(request):
-    articles = Article.objects.filter(published_at__lte=now()).order_by('-rank')
-    latest_articles = Article.objects.filter(published_at__lte=now()).order_by('-created')[3:]
-    context = {'articles': articles, 'latest_articles': latest_articles}
+    top_article = Article.objects.filter(published_at__lte=now()).order_by('-rank')[0]
+    articles = Article.objects.filter(published_at__lte=now()).order_by('-rank')[1:]
+    latest_articles = Article.objects.filter(published_at__lte=now()).order_by('-created')[:3]
+    context = {'articles': articles, 'latest_articles': latest_articles, 'top_article': top_article}
     return render(request, 'blog/index.html', context=context)
 
 
 def view(request, slug):
     article = Article.objects.get(slug=slug)
     article.set_rank()
-    context = {'article': article}
+    top_articles = Article.objects.filter(published_at__lte=now()).order_by('-rank')[:4]
+    context = {'article': article, 'top_articles': top_articles}
     return render(request, 'blog/view.html', context=context)
 
 

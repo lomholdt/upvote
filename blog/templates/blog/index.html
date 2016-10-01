@@ -16,15 +16,15 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
-                                    <img class="img-responsive left-image" src="{% static 'blog/img/placeholder.png' %}">
+                                    <img class="img-responsive left-image" src="{{ top_article.get_cover_photo }}">
                                 </div>
                                 <div class="col-sm-12 col-md-6" style="">
-                                    <p class="time">10-02-2015</p>
+                                    <p class="time">{{ top_article.published_at }}</p>
                                     <div class="top-forside-rubrik">
-                                        <a href="article.html"><p>Hvis du skal vise, at du har følelser for ham, skal du ikke gøre dette</p></a>
+                                        <a href="article.html"><p>{{ top_article.title }}</p></a>
                                     </div>
                                     <div class="top-forside-manchet">
-                                        <p>Der er nogle ting, du helt sikkert har lyst til at gøre, når du har et kæmpe crush. Problemet er bare, at nogle af tingene får dig til at virke skør. Hold dig fra de her ting:</p>
+                                        <p>{{ top_article.lead }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -100,15 +100,6 @@
 
                 </div>
             </div>
-
-            <script>
-
-                new Fingerprint2().get(function(result, components){
-                    console.log(result); //a hash, representing your device fingerprint
-                    console.log(components); // an array of FP components
-                });
-
-            </script>
 
         </div>
     </div>
