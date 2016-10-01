@@ -48,6 +48,7 @@ class Article(models.Model):
     ups = models.IntegerField(default=0)
     downs = models.IntegerField(default=0)
     rank = models.FloatField(default=0)
+    source = models.CharField(max_length=1028, verbose_name=_('kilde'), blank=True, null=True)
 
     def __str__(self):
         return self.title

@@ -9,23 +9,28 @@
             <div class="row">
                 <div class="col-sm-12">
                     <!-- Banner 930x180 -->
-                    <img class="img-responsive" src="http://placehold.it/930x180">
+                    <img class="" src="https://placehold.it/930x180">
                     <hr>
                     <!-- Top artikel -->
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-sm-12 col-md-6">
-                                    <img class="img-responsive left-image" src="{{ top_article.get_cover_photo }}">
+                                <div class="col-sm-4 col-md-4">
+                                    <a href="{{ top_article.get_absolute_url }}">
+                                        <img class="img-responsive left-image" src="{{ top_article.get_cover_photo }}">
+                                    </a>
                                 </div>
-                                <div class="col-sm-12 col-md-6" style="">
+                                <div class="col-sm-4 col-md-4" style="">
                                     <p class="time">{{ top_article.published_at }}</p>
                                     <div class="top-forside-rubrik">
-                                        <a href="article.html"><p>{{ top_article.title }}</p></a>
+                                        <a href="{{ top_article.get_absolute_url }}"><p>{{ top_article.title }}</p></a>
                                     </div>
                                     <div class="top-forside-manchet">
                                         <p>{{ top_article.lead }}</p>
                                     </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <img src="https://placehold.it/300x250" alt="">
                                 </div>
                             </div>
                         </div>
@@ -61,7 +66,7 @@
                     {% if forloop.counter|divisibleby:6 %}
 
                         <!-- Banner 930x180 -->
-                        <img class="img-responsive banner" src="http://placehold.it/930x180">
+                        <img class="img-responsive banner" src="https://placehold.it/930x180">
                     {% endif %}
 
                 {% endfor %}
@@ -84,6 +89,9 @@
                                         <div class="forside-rubrik">
                                             <a href="{{ article.get_absolute_url }}"><p>{{ article.title }}</p></a>
                                         </div>
+                                        <div class="forside-manchet">
+                                            <p>{{ article.lead }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -93,10 +101,10 @@
                 </div>
                 <div class="col-sm-4">
                     <!-- Banner 300x250 -->
-                    <img class="img-responsive" src="http://placehold.it/300x250">
+                    <img class="img-responsive" src="https://placehold.it/300x250">
                     <br>
                     <!-- Banner 300x250 -->
-                    <img class="img-responsive" src="http://placehold.it/300x250">
+                    <img class="img-responsive" src="https://placehold.it/300x250">
 
                 </div>
             </div>
